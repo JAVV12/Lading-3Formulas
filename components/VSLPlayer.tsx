@@ -67,15 +67,6 @@ export default function VSLPlayer({ videoUrl, onProgress }: VSLPlayerProps) {
                         >
                             <span className="material-symbols-outlined text-primary text-5xl sm:text-7xl translate-x-1">play_arrow</span>
                         </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="bg-black/80 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10 flex items-center gap-3 shadow-xl"
-                        >
-                            <span className="material-symbols-outlined text-primary text-xl animate-pulse">ads_click</span>
-                            <span className="text-white text-sm sm:text-base font-black uppercase tracking-[0.2em]">REPRODUCIR VSL</span>
-                        </motion.div>
                     </div>
                 </div>
             ) : (
