@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -36,7 +36,7 @@ body {
     }
 
     .sticky-countdown {
-        @apply fixed top-0 left-0 w-full z-[100] bg-primary py-3 px-4 flex flex-col justify-center items-center gap-1 shadow-[0_4px_30px_rgba(255, 0, 0, 0.3)] backdrop-blur-md;
+        @apply fixed top-0 left-0 w-full z-[100] bg-primary py-3 px-4 flex flex-col justify-center items-center gap-1 shadow-[0_4px_30px_rgba(255,0,0,0.3)] backdrop-blur-md;
     }
 
     .haze-effect {
