@@ -37,6 +37,21 @@ const cardVariants: any = {
 
 export default function Home() {
     const [showButton, setShowButton] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(899); // 14:59 en segundos
+
+    // Lógica del Contador Regresivo
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const formatTime = (seconds: number) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
 
     const TRIGGER_SECONDS = 5;
 
@@ -47,18 +62,20 @@ export default function Home() {
     };
 
     return (
-        <main className="min-h-screen bg-brand-black overflow-x-hidden selection:bg-primary selection:text-white">
-            {/* Sticky Countdown */}
+        <main className="min-h-screen bg-brand-black overflow-x-hidden selection:bg-primary selection:text-white pt-16">
+            {/* Sticky/Fixed Countdown Bar */}
             <motion.div
-                initial={{ y: -50 }}
+                initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                transition={{ type: "spring", stiffness: 100 }}
-                className="sticky-countdown w-full"
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                className="sticky-countdown"
             >
                 <div className="flex items-center gap-2 whitespace-nowrap">
-                    <span className="material-symbols-outlined text-brand-black text-sm">timer</span>
-                    <p className="text-[10px] sm:text-[12px] md:text-sm font-black tracking-[0.05em] sm:tracking-[0.15em] text-brand-black uppercase">LA OFERTA TERMINA EN: </p>
-                    <span className="text-brand-black font-black tracking-widest text-sm md:text-base border-b-2 border-brand-black/30">14:59</span>
+                    <span className="material-symbols-outlined text-brand-black text-sm md:text-base animate-pulse">timer</span>
+                    <p className="text-[10px] sm:text-[12px] md:text-sm lg:text-base font-black tracking-[0.05em] sm:tracking-[0.15em] text-brand-black uppercase">LA OFERTA TERMINA EN: </p>
+                    <span className="text-brand-black font-black tracking-widest text-sm md:text-xl lg:text-2xl border-b-2 border-brand-black/40 tabular-nums">
+                        {formatTime(timeLeft)}
+                    </span>
                 </div>
             </motion.div>
 
