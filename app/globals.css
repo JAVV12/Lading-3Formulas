@@ -36,7 +36,22 @@ body {
     }
 
     .sticky-countdown {
-        @apply fixed top-0 left-0 w-full z-[100] bg-primary py-3 px-4 flex flex-col justify-center items-center gap-1 shadow-[0_4px_30px_rgba(255,0,0,0.3)] backdrop-blur-md;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        background-color: #ff0000;
+        /* Primary brand color */
+        padding: 12px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 4px 30px rgba(255, 0, 0, 0.3);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
     }
 
     .haze-effect {
