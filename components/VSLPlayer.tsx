@@ -10,10 +10,9 @@ interface VSLPlayerProps {
     autoPlay?: boolean;
 }
 
-export default function VSLPlayer({ videoUrl, posterUrl, onProgress }: VSLPlayerProps) {
+export default function VSLPlayer({ videoUrl, onProgress }: VSLPlayerProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [isMuted, setIsMuted] = useState(false); // Empezamos sin mute si es por click
 
     // Seguimiento del progreso
     useEffect(() => {

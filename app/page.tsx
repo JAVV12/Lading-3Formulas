@@ -2,11 +2,11 @@
 // v2.1.0 - Triggering fresh Vercel deployment with robust CSS fixes
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import VSLPlayer from '@/components/VSLPlayer';
 
-// Variants with any casting to avoid strict easing type issues in this environment
-const containerVariants: any = {
+// Variants with proper typing
+const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -17,7 +17,7 @@ const containerVariants: any = {
     }
 };
 
-const itemVariants: any = {
+const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
         opacity: 1,
@@ -26,7 +26,7 @@ const itemVariants: any = {
     }
 };
 
-const cardVariants: any = {
+const cardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95, y: 20 },
     visible: {
         opacity: 1,
@@ -261,6 +261,7 @@ export default function Home() {
                         >
                             <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl transition-all"></div>
                             <div className="relative size-48 sm:size-64 rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img alt="Jonathan Toro Photo" className="w-full h-full object-cover grayscale-[0.4] group-hover:grayscale-0 transition-all duration-500" src="/images/mentor.jpg" />
                             </div>
                         </motion.div>
