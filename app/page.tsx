@@ -1,4 +1,5 @@
 'use client';
+// v2.1.0 - Triggering fresh Vercel deployment with robust CSS fixes
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
