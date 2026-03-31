@@ -3,8 +3,8 @@ const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-const input = path.join(process.cwd(), 'public/videos/vsl.mp4');
-const output = path.join(process.cwd(), 'public/videos/vsl-optimized.mp4');
+const input = path.join(process.cwd(), 'public/videos/vsl-input.mp4');
+const output = path.join(process.cwd(), 'public/videos/vsl.mp4');
 
 if (!fs.existsSync(input)) {
     console.error('Error: Source video not found at', input);
