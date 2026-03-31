@@ -318,25 +318,37 @@ export default function Home() {
                     <h2 className="text-white text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black mt-8 uppercase">3 PALANCAS DE CONTROL</h2>
                 </motion.div>
 
-                <div className="space-y-12 max-w-4xl mx-auto flex flex-col items-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 sm:px-6">
                     {[
-                        { m: 'M1', title: 'Módulo 1: La Anatomía del Ego', desc: 'Mindset de CEO escalable.' },
-                        { m: 'M2', title: 'Módulo 2: El Cash Flow Switch', desc: 'Sistema para encender el flujo de caja predecible.' },
-                        { m: 'M3', title: 'Módulo 3: El Embudo Invisible', desc: 'Adquisición de clientes automatizada.' }
+                        { num: '01', title: 'LA ANATOMÍA DEL EGO', desc: 'Identifica los parásitos mentales que devoran tu rentabilidad y transmuta tu identidad hacia un CEO impasible.', icon: 'psychology' },
+                        { num: '02', title: 'EL CASH FLOW SWITCH', desc: 'Activa la arquitectura financiera que garantiza flujo de caja constante, eliminando la incertidumbre para siempre.', icon: 'payments' },
+                        { num: '03', title: 'EL EMBUDO INVISIBLE', desc: 'Implementa sistemas de adquisición de clientes automatizados que funcionan mientras tú descansas.', icon: 'hub' }
                     ].map((item, idx) => (
                         <motion.div
                             key={idx}
                             variants={itemVariants}
-                            className="flex flex-col items-center text-center max-w-md group"
+                            whileHover={{ y: -15, borderColor: "rgba(255, 0, 0, 0.5)" }}
+                            className="bg-dark-grey/40 backdrop-blur-md border border-dark-red/20 rounded-[40px] p-8 sm:p-10 flex flex-col items-start text-left relative overflow-hidden group transition-all duration-500 shadow-2xl hover:shadow-primary/20"
                         >
-                            <motion.div
-                                whileHover={{ scale: 1.1, backgroundColor: "#ff0000" }}
-                                className="flex size-12 sm:size-16 md:size-20 items-center justify-center rounded-full bg-primary text-white text-sm sm:text-lg md:text-xl font-black glow-shadow border-2 border-primary/50 uppercase cursor-default mb-6 shadow-[0_0_15px_rgba(255,0,0,0.4)]"
-                            >
-                                {item.m}
-                            </motion.div>
-                            <h4 className="text-primary-glow font-bold uppercase text-base sm:text-xl md:text-2xl tracking-widest mb-4 group-hover:glow-text transition-all">{item.title}</h4>
-                            <p className="text-slate-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">{item.desc}</p>
+                            {/* Card Glow */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[50px] -z-10 group-hover:bg-primary/20 transition-all duration-700"></div>
+
+                            {/* Number Header */}
+                            <div className="flex justify-between items-center w-full mb-8">
+                                <span className="text-primary font-black text-4xl sm:text-5xl opacity-30 group-hover:opacity-100 transition-opacity duration-500">{item.num}</span>
+                                <div className="size-12 sm:size-16 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:bg-primary transition-all duration-500">
+                                    <span className="material-symbols-outlined text-primary group-hover:text-white text-2xl sm:text-3xl transition-colors">{item.icon}</span>
+                                </div>
+                            </div>
+
+                            {/* Content */}
+                            <h4 className="text-white font-black text-xl sm:text-2xl mb-4 uppercase tracking-tighter group-hover:text-primary-glow transition-colors">{item.title}</h4>
+                            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-medium group-hover:text-slate-200 transition-colors">{item.desc}</p>
+
+                            {/* Subtle Button Reveal on Hover */}
+                            <div className="mt-8 pt-6 border-t border-white/5 w-full transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                <span className="text-primary text-[10px] font-black uppercase tracking-[0.3em]">MÓDULO CRÍTICO</span>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
