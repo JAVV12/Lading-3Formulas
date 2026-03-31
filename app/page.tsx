@@ -354,51 +354,113 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Final Offer */}
+            {/* Investment Section (Pricing) */}
             <AnimatePresence>
                 {showButton && (
                     <motion.section
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 100 }}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="px-6 py-20 bg-dark-red/5 border-t border-dark-red/30"
+                        className="px-6 py-24 bg-dark-red/5 border-y border-dark-red/30 relative overflow-hidden"
                     >
-                        <div className="text-center mb-10">
-                            <h2 className="text-white text-xl sm:text-2xl font-black mb-10 uppercase tracking-tight">INICIA TU TRANSFORMACIÓN</h2>
+                        {/* Background Deco */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[300px] bg-primary/5 blur-[120px] rounded-full"></div>
 
-                            <motion.div
-                                whileHover={{ y: -10 }}
-                                className="p-6 sm:p-8 rounded-3xl bg-dark-grey border-2 border-primary/40 text-center relative overflow-hidden mb-12 shadow-2xl max-w-md mx-auto"
-                            >
-                                <div className="absolute -top-10 -right-10 size-32 bg-primary/10 rounded-full blur-3xl"></div>
-                                <div className="flex flex-col items-center gap-1 mb-8">
-                                    <span className="text-white/30 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">VALOR REAL $171</span>
-                                    <span className="text-primary-glow text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black glow-text leading-tight my-2">PRECIO HOY $47 USD</span>
-                                    <span className="text-neon-green text-[11px] sm:text-[14px] md:text-base lg:text-lg font-black uppercase tracking-widest mt-2 border border-neon-green/30 px-3 py-1 rounded-md bg-neon-green/5">AHORRO $124 USD</span>
-                                </div>
-                                <div className="flex flex-col items-center gap-4">
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="w-full bg-primary text-white font-black py-5 sm:py-6 rounded-2xl glow-button uppercase tracking-[0.2em] text-base sm:text-lg transition-all shadow-[0_0_20px_rgba(255,0,0,0.3)]"
-                                    >
-                                        QUIERO LIBERARME
-                                    </motion.button>
-                                    <p className="text-slate-200 text-[9px] font-bold uppercase tracking-widest">PAGO ÚNICO • ACCESO DE POR VIDA</p>
-                                </div>
-                            </motion.div>
+                        <div className="max-w-6xl mx-auto relative z-10">
+                            <div className="text-center mb-16">
+                                <h2 className="text-white text-3xl sm:text-5xl md:text-6xl font-black mb-6 uppercase tracking-tighter leading-tight">
+                                    TU INVERSIÓN EN <span className="text-primary-glow">EL ÉXITO</span>
+                                </h2>
+                                <p className="text-slate-400 text-sm sm:text-lg max-w-2xl mx-auto font-medium">
+                                    Únete hoy y obtén acceso inmediato a todo el sistema NEXOR más los bonos exclusivos.
+                                </p>
+                            </div>
 
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                {/* Value Stack */}
+                                <div className="space-y-8 order-2 lg:order-1">
+                                    <div className="inline-block border border-primary/40 bg-primary/10 px-4 py-1 rounded-full">
+                                        <p className="text-primary text-[10px] sm:text-xs font-black uppercase tracking-widest">RESUMEN DE TU ACCESO:</p>
+                                    </div>
+
+                                    <div className="space-y-6">
+                                        {[
+                                            { t: "MÉTODO NEXOR COMPLETO", v: "$97" },
+                                            { t: "BONO 1: LAS 3 FÓRMULAS PROHIBIDAS", v: "$47" },
+                                            { t: "BONO 2: TABLERO DE CONTROL PREDICTIVO", v: "$67" }
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex justify-between items-center border-b border-primary/10 pb-4">
+                                                <div className="flex items-center gap-3">
+                                                    <span className="material-symbols-outlined text-neon-green text-xl">check_circle</span>
+                                                    <span className="text-white font-bold text-sm sm:text-base uppercase tracking-tight">{item.t}</span>
+                                                </div>
+                                                <span className="text-slate-500 font-bold text-xs sm:text-sm">{item.v}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                                        <p className="text-white font-black text-xl mb-2">VALOR TOTAL REAL: <span className="text-slate-400 line-through">$171 USD</span></p>
+                                        <p className="text-neon-green font-black text-sm uppercase tracking-widest">AHORRAS $124 USD HOY MISMO</p>
+                                    </div>
+                                </div>
+
+                                {/* Main Pricing Card */}
+                                <motion.div
+                                    whileHover={{ y: -10 }}
+                                    className="order-1 lg:order-2 p-1 rounded-[40px] bg-gradient-to-br from-primary via-primary/50 to-dark-red shadow-[0_0_60px_rgba(255,0,0,0.4)] transition-all duration-500"
+                                >
+                                    <div className="bg-dark-grey rounded-[38px] p-8 sm:p-12 h-full text-center relative overflow-hidden">
+                                        {/* Label */}
+                                        <div className="absolute top-0 right-0 bg-primary text-white font-black px-8 py-2 rounded-bl-3xl uppercase text-[10px] tracking-widest shadow-xl z-20">
+                                            OFERTA LIMITADA
+                                        </div>
+
+                                        <p className="text-slate-400 font-black uppercase tracking-[0.3em] text-[10px] mb-6">PAGO ÚNICO POR ACCESO TOTAL</p>
+
+                                        <div className="flex items-start justify-center gap-1 mb-8">
+                                            <span className="text-primary font-black text-3xl sm:text-4xl mt-2">$</span>
+                                            <span className="text-white text-7xl sm:text-9xl font-black tracking-tighter leading-none glow-text">47</span>
+                                            <span className="text-slate-400 font-black text-xl sm:text-2xl mt-auto pb-4">USD</span>
+                                        </div>
+
+                                        <div className="space-y-6">
+                                            <motion.button
+                                                whileHover={{ scale: 1.02 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                className="w-full bg-primary text-white font-black py-6 sm:py-8 rounded-3xl glow-button uppercase tracking-[0.2em] text-lg sm:text-2xl transition-all shadow-2xl relative z-10"
+                                            >
+                                                ¡QUIERO ACCEDER YA!
+                                            </motion.button>
+
+                                            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 opacity-60">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="material-symbols-outlined text-[14px]">lock</span>
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest">Pago 100% Seguro</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="material-symbols-outlined text-[14px]">all_inclusive</span>
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest">Acceso de por vida</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            {/* Guarantee Section */}
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
-                                className="p-8 rounded-3xl bg-dark-grey border border-dark-red/30 text-center relative overflow-hidden shadow-xl max-w-md mx-auto"
+                                className="mt-24 p-8 sm:p-12 rounded-[40px] bg-dark-grey/50 border border-dark-red/30 backdrop-blur-xl text-center relative overflow-hidden shadow-2xl max-w-3xl mx-auto"
                             >
-                                <span className="material-symbols-outlined text-primary text-5xl sm:text-6xl mb-4">verified_user</span>
-                                <h3 className="text-white text-xl sm:text-2xl font-extrabold mb-2 uppercase">GARANTÍA DE 7 DÍAS</h3>
-                                <p className="text-primary text-[9px] font-black tracking-[0.2em] mb-4 uppercase">RESPALDADO POR HOTMART</p>
-                                <p className="text-slate-300 text-sm leading-relaxed font-medium">
-                                    Si no sientes que tu visión del negocio ha cambiado radicalmente, te devolvemos el <span className="text-primary-glow font-bold">100% de tu dinero</span> sin preguntas.
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+                                <span className="material-symbols-outlined text-primary text-6xl sm:text-8xl mb-6 glow-text opacity-80">verified_user</span>
+                                <h3 className="text-white text-2xl sm:text-4xl font-black mb-4 uppercase tracking-tighter">GARANTÍA DE SATISFACCIÓN TOTAL</h3>
+                                <p className="text-primary font-black tracking-[0.3em] mb-8 uppercase text-xs">7 DÍAS SIN RIESGO • RESPALDADO POR HOTMART</p>
+                                <p className="text-slate-300 text-base sm:text-xl leading-relaxed font-medium">
+                                    Prueba el sistema por 7 días completos. Si no sientes que es exactamente lo que necesitas para escalar tu negocio, <span className="text-primary-glow font-bold">te devolvemos cada centavo</span>. Sin preguntas, sin trabas.
                                 </p>
                             </motion.div>
                         </div>
