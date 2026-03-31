@@ -31,15 +31,21 @@ export default function VSLPlayer({ videoUrl, onProgress }: VSLPlayerProps) {
         return () => video.removeEventListener('timeupdate', handleTimeUpdate);
     }, [isLoaded, onProgress]);
 
-    const handleStartVideo = () => {
-        setIsLoaded(true);
+    const togglePlay = () => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
     };
 
-    // Miniatura extraída del video usando el fragmento temporal
-    const videoThumbnail = `${videoUrl}#t=0.1`;
-
     return (
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-10 vsl-border shadow-2xl bg-black group transition-all duration-500">
+        <div
+            className="relative w-full aspect-video rounded-2xl overflow-hidden mb-10 vsl-border shadow-2xl bg-black group transition-all duration-500 select-none touch-none"
+            onContextMenu={(e) => e.preventDefault()}
+        >
             {!isLoaded ? (
                 /* Preview State (Video Frame as Thumbnail) */
                 <div
@@ -70,15 +76,21 @@ export default function VSLPlayer({ videoUrl, onProgress }: VSLPlayerProps) {
                     </div>
                 </div>
             ) : (
-                /* Active Video State */
-                <video
-                    ref={videoRef}
-                    src={videoUrl}
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    controls
-                    playsInline
-                />
+                /* Active Video State - Restricted Interaction */
+                <div className="relative w-full h-full cursor-default" onClick={togglePlay}>
+                    <video
+                        ref={videoRef}
+                        src={videoUrl}
+                        className="w-full h-full object-cover pointer-events-none"
+                        autoPlay
+                        playsInline
+                        disablePictureInPicture
+                        disableRemotePlayback
+                        onContextMenu={(e) => e.preventDefault()}
+                    />
+                    {/* Hidden interactive layer to catch clicks but block video context menu */}
+                    <div className="absolute inset-0 z-10 bg-transparent"></div>
+                </div>
             )}
         </div>
     );
