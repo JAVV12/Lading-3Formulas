@@ -140,10 +140,13 @@ export default function Home() {
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 className="max-w-md mx-auto"
                             >
-                                <motion.button
+                                <motion.a
+                                    href="https://pay.hotmart.com/E103866366S"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(255, 0, 0, 0.7)" }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="relative w-full bg-primary text-white font-black py-5 md:py-7 rounded-xl glow-button uppercase tracking-widest text-sm md:text-base lg:text-lg transition-all shadow-lg"
+                                    className="relative block w-full bg-primary text-white font-black py-5 md:py-7 rounded-xl glow-button uppercase tracking-widest text-sm md:text-base lg:text-lg transition-all shadow-lg text-center"
                                 >
                                     ¡QUIERO LIBERAR MI FLUJO DE CAJA AHORA!
                                     <motion.div
@@ -153,7 +156,7 @@ export default function Home() {
                                     >
                                         <span className="material-symbols-outlined">double_arrow</span>
                                     </motion.div>
-                                </motion.button>
+                                </motion.a>
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -456,13 +459,16 @@ export default function Home() {
                                 </div>
 
                                 <div className="space-y-6">
-                                    <motion.button
+                                    <motion.a
+                                        href="https://pay.hotmart.com/E103866366S"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="w-full bg-primary text-white font-black py-6 sm:py-8 rounded-3xl glow-button uppercase tracking-[0.2em] text-lg sm:text-2xl transition-all shadow-2xl relative z-10"
+                                        className="block w-full bg-primary text-white font-black py-6 sm:py-8 rounded-3xl glow-button uppercase tracking-[0.2em] text-lg sm:text-2xl transition-all shadow-2xl relative z-10 text-center"
                                     >
                                         ¡QUIERO ACCEDER YA!
-                                    </motion.button>
+                                    </motion.a>
 
                                     <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 opacity-60">
                                         <div className="flex items-center gap-2">
